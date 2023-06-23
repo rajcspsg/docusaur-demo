@@ -12,15 +12,15 @@ function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="CodeYourFuture's Software Development Syllabus"
-    >
+      description="Zipper Overview">
       <header className={classnames("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <Link className="button button--lg" to={useBaseUrl("overview")}>
-            First time here? Read the Overview
-          </Link>
+          <p >
+          An implementation of Huet’s Zipper for Scala and Scala.js that is intended to be usable in many common scenarios
+          </p>
+          <Link className="button button--lg" to="https://github.com/stanch/zipper">View on gitub</Link>
         </div>
       </header>
       <main>

@@ -1,27 +1,22 @@
 module.exports = {
-  title: "CodeYourFuture Syllabus",
-  url: "https://syllabus.codeyourfuture.io/",
+  title: "Zipper",
+  url: "https://stanch.github.io",
   baseUrl: "/",
   favicon: "img/favicon.png",
-  organizationName: "codeyourfuture",
-  projectName: "Syllabus",
+  organizationName: "stanch",
+  projectName: "Zipper",
   onBrokenLinks: "throw",
-  plugins: [require.resolve("docusaurus-lunr-search")],
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/CodeYourFuture/Syllabus-V2/edit/master/",
+          editUrl: "https://github.com/stanch/zipper/edit/master",
           routeBasePath: "/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
-        },
-        googleAnalytics: {
-          trackingID: "UA-159979458-2",
-          anonymizeIP: true,
         },
       },
     ],
@@ -43,7 +38,7 @@ module.exports = {
     navbar: {
       hideOnScroll: true,
       logo: {
-        alt: "CodeYourFuture Logo",
+        alt: "Zipper Logo",
         src: "img/logo.png",
       },
       items: [
@@ -57,37 +52,20 @@ module.exports = {
           items: [
             {
               label: "Website",
-              href: "https://www.codeyourfuture.io",
+              href: "https://stanch.github.io/zipper/",
             },
             {
               label: "Documentation",
-              href: "https://docs.codeyourfuture.io",
+              href: "https://github.com/stanch/zipper/tree/master/images/readme",
             },
             {
               label: "GitHub",
-              href: "https://github.com/codeyourfuture/",
+              href: "https://github.com/stanch/zipper",
             },
           ],
-        },
-        {
-          title: "Social",
-          items: [
-            {
-              label: "Facebook",
-              href: "https://www.facebook.com/codeyourfuture.io",
-            },
-            {
-              label: "Instagram",
-              href: "https://www.instagram.com/codeyourfuture_",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/CodeYourFuture",
-            },
-          ],
-        },
+        }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} CodeYourFuture`,
+      copyright: `Copyright © ${new Date().getFullYear()} Zipper`,
     },
   },
 };
