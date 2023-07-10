@@ -1,10 +1,17 @@
 import React from "react";
+import { CodeBlock, dracula } from "react-code-blocks";
 import classnames from "classnames";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import Header from "./components/header.js";
+import Image from "./components/img";
+import scala from "./codeblocks";
+import CodeSection from "./components/code.js"
+
+const theme = "dracula";
+const language = "scala";
 
 function Home() {
   const context = useDocusaurusContext();
@@ -13,77 +20,33 @@ function Home() {
     <Layout
       title={`${siteConfig.title}`}
       description="Zipper Overview">
-      <header className={classnames("hero hero--primary", styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <p >
-          An implementation of Huet’s Zipper for Scala and Scala.js that is intended to be usable in many common scenarios
-          </p>
-          <Link className="button button--lg" to="https://github.com/stanch/zipper">View on gitub</Link>
-        </div>
-      </header>
+
+      <Header />
+      
       <main>
         <section className={styles.features}>
           <div className="container">
             <p>
-              This is the syllabus and course material for{" "}
-              <a href="https://codeyourfuture.io/">CodeYourFuture</a> (CYF), a
-              not-for-profit volunteer-run coding school for refugees, asylum
-              seekers and disadvantaged groups.
+              A Zipper is a tool that allows to navigate and modify immutable recursive data structures.
+              This implementation is inspired by the  <a href="https://www.st.cs.uni-saarland.de/edu/seminare/2005/advanced-fp/docs/huet-zipper.pdf">original paper by Huet </a>, as well as the <a href="http://argonaut.io/doc/zipper/"> Argonaut’s JSON Zipper</a>.
             </p>
-            <p>
-              During the course you will learn a technology stack that helps you
-              build anything from a simple website to a powerful database-driven
-              web application.
-            </p>
-            <p>The eight-month course contains:</p>
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>SQL</li>
-              <li>JavaScript</li>
-              <li>
-                Back-end development using{" "}
-                <a href="https://nodejs.org">NodeJS</a>
-              </li>
-              <li>
-                Front-end development using{" "}
-                <a href="https://reactjs.org/">React</a>
-              </li>
-              <li>Test Driven Development using {" "}
-                <a href="https://jestjs.io/">Jest</a></li>
-            </ul>
-            <p>
-              We&#39;ll complement the course with workshops on modern software
-              methodologies and job interview practices.
-            </p>
-            <h2 id="documentation">Documentation</h2>
-            <p>
-              In this Syllabus you&#39;ll find the content that we teach at
-              CodeYourFuture. For other operational details you should read{" "}
-              <a href="https://docs.codeyourfuture.io">
-                our documentation website
-              </a>
-              .
-            </p>
-            <h2 id="trainees">Trainees</h2>
-            <p>
-              If you&#39;re interested in joining the program, please{" "}
-              <a href="https://codeyourfuture.io/students">
-                apply through our website
-              </a>
-              .
-            </p>
+            <p>Consider the following example:</p>
+            <div><CodeSection codeString={scala.tree}></CodeSection></div>
+          
+          <div>
+          <Image src="../../static/img/tree.png" />
+          </div>
+            
+            <div><p>Since the tree is immutable, modifying it can be a pain, but it’s easily solved with a Zipper:</p></div>
+            <div><CodeSection codeString={scala.modifiedTree}></CodeSection></div>
+            
+            <div><p>Here’s what the modified tree looks like:</p></div>
+            <div><Image src="../../static/img/modified_tree.png"/></div>
+            <div><p>If we draw both trees side by side, we’ll see that the unchanged parts are shared:</p></div>
+            <div><Image src="../../static/img/both.png"/></div>
             <h2 id="getting-involved">Getting involved</h2>
             <p>We are looking for volunteers in</p>
-            <ul>
-              <li>London, UK</li>
-              <li>Glasgow, UK</li>
-              <li>Manchester, UK</li>
-              <li>Birmingham, UK</li>
-              <li>Cape Town, South Africa</li>
-            </ul>
+            
             <p>
               Both coders and non-coders can help out in a variety of ways that
               suit your skills and with varying commitment levels depending on
@@ -114,29 +77,21 @@ function Home() {
             <h2 id="contributing">Creative Commons Open-Source License</h2>
             <p>
               This work is licensed under a{" "}
-              <a
-                href="https://creativecommons.org/licenses/by-sa/4.0/"
-                target="_blank"
-              >
-                Creative Commons Attribution-ShareAlike 4.0 International
-                License
+              <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                Creative Commons Attribution-ShareAlike 4.0 International License
               </a>
               .
             </p>
-            <a
-              href="https://creativecommons.org/licenses/by-sa/4.0/"
-              target="_blank"
-            >
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
               <img
                 src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png"
                 alt="Creative Commons Open-Source License"
-                width="200px"
-              />
+                width="200px" />
             </a>
           </div>
         </section>
       </main>
-    </Layout>
+    </Layout >
   );
 }
 

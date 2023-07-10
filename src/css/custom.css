@@ -55,3 +55,25 @@
 .onDarkMode_whiteBg {
   background: white;
 }
+
+.app {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.img-container {
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 450px;
+  transition: transform 0.5s;
+}
+
+.img-border {
+  width: 320;
+  height: 320;
+  border-width: 1;
+  border-color: '#F44335';
+}
