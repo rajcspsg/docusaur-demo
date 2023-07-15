@@ -65,15 +65,3 @@
 .img-container {
   overflow: hidden;
 }
-
-.img-container img {
-  width: 450px;
-  transition: transform 0.5s;
-}
-
-.img-border {
-  width: 320;
-  height: 320;
-  border-width: 1;
-  border-color: '#F44335';
-}

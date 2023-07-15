@@ -43,7 +43,8 @@
   "devDependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "file-loader": "^6.0.0"
+    "file-loader": "^6.0.0",
+    "gh-pages": "^5.0.0"
   },
   "engines": {
     "node": ">=16"

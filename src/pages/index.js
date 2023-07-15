@@ -8,7 +8,13 @@ import styles from "./styles.module.css";
 import Header from "./components/header.js";
 import Image from "./components/img";
 import scala from "./codeblocks";
-import CodeSection from "./components/code.js"
+import CodeSection from "./components/code.js";
+import License from "./components/mit.js";
+import both from "../../static/img/both.png";
+import tree from "../../static/img/tree.png";
+import modified from "../../static/img/modified_tree.png";
+import license1 from "../../static/img/mit_license1.jpg";
+import license2 from "../../static/img/mit_license2.png";
 
 const theme = "dracula";
 const language = "scala";
@@ -21,8 +27,8 @@ function Home() {
       title={`${siteConfig.title}`}
       description="Zipper Overview">
 
-      <Header />
-      
+      <Header title={siteConfig.title} tagline={siteConfig.tagline} />
+
       <main>
         <section className={styles.features}>
           <div className="container">
@@ -32,62 +38,55 @@ function Home() {
             </p>
             <p>Consider the following example:</p>
             <div><CodeSection codeString={scala.tree}></CodeSection></div>
-          
-          <div>
-          <Image src="../../static/img/tree.png" />
-          </div>
-            
+
+            <div>
+              <Image src={tree} />
+            </div>
+
             <div><p>Since the tree is immutable, modifying it can be a pain, but it’s easily solved with a Zipper:</p></div>
             <div><CodeSection codeString={scala.modifiedTree}></CodeSection></div>
-            
+
             <div><p>Here’s what the modified tree looks like:</p></div>
-            <div><Image src="../../static/img/modified_tree.png"/></div>
+            <div><Image src={modified} height="500px" /></div>
             <div><p>If we draw both trees side by side, we’ll see that the unchanged parts are shared:</p></div>
-            <div><Image src="../../static/img/both.png"/></div>
-            <h2 id="getting-involved">Getting involved</h2>
-            <p>We are looking for volunteers in</p>
-            
+            <div><Image src={both} /></div>
+            <Link id="Usage" href="#Usage">Usage</Link>
+            <p>Include these lines in your build.sbt:</p>
+            <div><CodeSection codeString={scala.usage}></CodeSection></div>
+            <div>
+              <Link id="Unzip" href="#Unzip">Unzip</Link>
+              <p>In order for the Zipper to work on your data structure <code class="highlighter-rouge">Tree</code>, you need an implicit instance of <code class="highlighter-rouge">Unzip[Tree]</code>. <code class="highlighter-rouge">Unzip</code> is defined as follows:</p>
+              <div><CodeSection codeString={scala.unzip}></CodeSection></div>
+              <p>As we saw before, the library can automatically derive <code class="highlighter-rouge">Unzip[Tree]</code> if the Tree is a case class that has a single field of type <code class="highlighter-rouge">List[Tree]</code>. It is also possible to derive an <code class="highlighter-rouge">Unzip[Tree]</code> for similar cases, but with other collections:</p>
+              <div><CodeSection codeString={scala.unzip2}></CodeSection></div>
+              The automatic derivation is powered by <a href="https://github.com/milessabin/shapeless">shapeless</a>.
+            </div>
+            <br />
+            <Link id="Moves" href="#Moves">Moves, failures and recovery</Link>
+
+            <div>
+              <div>There are many operations defined on a <code class="highlighter-rouge">Zipper</code>. Some of them are not safe, e.g. <code class="highlighter-rouge">moveLeft</code> will fail with an exception if there are no elements on the left. For all unsafe operations a safe version is provided, which is prefixed with <code class="highlighter-rouge">try</code>. These operations return a <code class="highlighter-rouge">Zipper.MoveResult</code>, which allows to recover from the failure or return to the original state:</div>
+              <br />
+              <div><CodeSection codeString={scala.moves}></CodeSection></div>
+            </div>
+            <Link id="Loops" href="#Loops">Loops</Link>
+            <br />
+            <br />
+            <div>
+              <code class="highlighter-rouge">Zipper</code> provides a looping functionality, which can be useful with recursive data:
+              <br />
+              <br />
+              <div><CodeSection codeString={scala.loops}></CodeSection></div>
+            </div>
             <p>
-              Both coders and non-coders can help out in a variety of ways that
-              suit your skills and with varying commitment levels depending on
-              how much time you can give.
-            </p>
-            <p>
-              Please{" "}
-              <a href="https://codeyourfuture.io/volunteers/">
-                contact us to get involved
+              This work is licensed under
+              <a href="https://opensource.org/license/mit/" target="_blank">
+                <License src={license1} alt="MIT License" width="50px" height="40px" />
               </a>
-              !
-            </p>
-            <h2 id="contributing">Contributing</h2>
-            <p>
-              Please read our{" "}
-              <a href="./contributing/overview">Contributing guide</a> to get
-              started with how you can contribute to the CodeYourFuture
-              Syllabus.
-            </p>
-            <h2 id="code-of-conduct">Code Of Conduct</h2>
-            <p>
-              You can find our full{" "}
-              <a href="https://codeyourfuture.io/about/code-of-conduct/">
-                code of conduct here
+              <a href="https://opensource.org/license/mit/" target="_blank">
+                <License src={license2} alt="MIT License" width="50px" height="40px" />
               </a>
-              .
             </p>
-            <h2 id="contributing">Creative Commons Open-Source License</h2>
-            <p>
-              This work is licensed under a{" "}
-              <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-                Creative Commons Attribution-ShareAlike 4.0 International License
-              </a>
-              .
-            </p>
-            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-              <img
-                src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png"
-                alt="Creative Commons Open-Source License"
-                width="200px" />
-            </a>
           </div>
         </section>
       </main>
